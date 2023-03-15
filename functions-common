@@ -421,6 +421,9 @@ function GetOSVersion {
     elif [[ "${ID}${VERSION}" =~ "rocky9" ]]; then
         os_VENDOR="Rocky"
         os_RELEASE=${VERSION_ID}
+    elif [[ "${ID}${VERSION}" =~ "eurolinux9" ]]; then
+        os_VENDOR="EuroLinux"
+        os_RELEASE=${VERSION_ID}
     else
         _ensure_lsb_release
 
@@ -470,6 +473,7 @@ function GetDistro {
         "$os_VENDOR" =~ (Scientific) || \
         "$os_VENDOR" =~ (OracleServer) || \
         "$os_VENDOR" =~ (Rocky) || \
+        "$os_VENDOR" =~ (EuroLinux) || \
         "$os_VENDOR" =~ (Virtuozzo) ]]; then
         # Drop the . release as we assume it's compatible
         # XXX re-evaluate when we get RHEL10
@@ -531,6 +535,7 @@ function is_fedora {
         [ "$os_VENDOR" = "RedHatEnterpriseServer" ] || \
         [ "$os_VENDOR" = "RedHatEnterprise" ] || \
         [ "$os_VENDOR" = "Rocky" ] || \
+        [ "$os_VENDOR" = "EuroLinux" ] || \
         [ "$os_VENDOR" = "CentOS" ] || [ "$os_VENDOR" = "CentOSStream" ] || \
         [ "$os_VENDOR" = "AlmaLinux" ] || \
         [ "$os_VENDOR" = "OracleServer" ] || [ "$os_VENDOR" = "Virtuozzo" ]
